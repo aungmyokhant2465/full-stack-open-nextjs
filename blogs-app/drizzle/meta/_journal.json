@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793016559861,
+      "tag": "0000_old_arclight",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793017961994,
+      "tag": "0001_nosy_purifiers",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793018089774,
+      "tag": "0002_kind_red_wolf",
+      "breakpoints": true
+    }
+  ]
+}

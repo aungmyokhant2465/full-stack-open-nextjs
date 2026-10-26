@@ -7,13 +7,13 @@ const Blogs = async ({
   searchParams: Promise<{ filter?: string }>;
 }) => {
   const { filter } = await searchParams;
-  const allBlogs = getBlogs();
-  const unsortedBlogs = filter
-    ? allBlogs.filter((b) =>
-        b.title.toLocaleLowerCase().includes(filter.trim().toLocaleLowerCase()),
-      )
-    : allBlogs;
-  const blogs = unsortedBlogs.sort((a, b) => b.likes - a.likes);
+  const allBlogs = await getBlogs(filter);
+  // const unsortedBlogs = filter
+  //   ? allBlogs.filter((b) =>
+  //       b.title.toLocaleLowerCase().includes(filter.trim().toLocaleLowerCase()),
+  //     )
+  //   : allBlogs;
+  const blogs = allBlogs.sort((a, b) => b.likes - a.likes);
 
   return (
     <div>
