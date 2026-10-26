@@ -22,6 +22,20 @@
       "when": 1793018089774,
       "tag": "0002_kind_red_wolf",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793021884121,
+      "tag": "0003_flippant_tyrannus",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1793022191159,
+      "tag": "0004_steady_tomas",
+      "breakpoints": true
     }
   ]
 }
