@@ -12,13 +12,11 @@ export default function NavBar() {
       {" | "}
       <Link href="/blogs">blogs</Link>
       {" | "}
-      <Link href="/blogs/new">create blog</Link>
-      {" | "}
       <Link href="/users">users</Link>
       {" | "}
       {session ? (
         <>
-          <Link href="/notes/new">create new</Link>
+          <Link href="/blogs/new">create blog</Link>
           {" | "}
           <em>{session.user?.name} logged in</em>{" "}
           <button onClick={() => signOut()}>logout</button>

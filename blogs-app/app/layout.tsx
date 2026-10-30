@@ -1,4 +1,3 @@
-import Link from "next/link";
 import AuthSessionProvider from "./components/SessionProvider";
 import NavBar from "./components/NavBar";
 
