@@ -12,6 +12,7 @@ export interface InitBlogStateType {
     author: string;
     url: string;
   };
+  success: boolean;
 }
 
 export const createBlog = async (
@@ -35,12 +36,14 @@ export const createBlog = async (
   if (!url || url.length < 5) {
     errors.push("Blog's url must be at least 5 characters long");
   }
+  const values = { title, author, url };
   if (errors.length > 0) {
-    return { errors, values: { title, author, url } };
+    return { errors, values, success: false };
   }
   await addBlog(title, author, url);
   revalidatePath("/blogs");
-  redirect("/blogs");
+  // redirect("/blogs");
+  return { errors: [], values, success: true };
 };
 
 export const increaseBlogLike = async (FormData: FormData) => {
