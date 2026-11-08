@@ -28,3 +28,10 @@ export const getUserWithBlogs = async (username: string) => {
     with: { blogs: true },
   });
 };
+
+export const generateToken = async (username: string) => {
+  await db
+    .update(users)
+    .set({ token: crypto.randomUUID() })
+    .where(eq(users.username, username));
+};

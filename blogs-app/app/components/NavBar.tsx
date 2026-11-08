@@ -23,7 +23,9 @@ export default function NavBar() {
             <Link href="/blogs/new" className="hover:text-gray-300">
               create blog
             </Link>
-            <em>{session.user?.name} logged in</em>
+            <Link href="/me" className="hover:text-gray-300">
+              Me
+            </Link>
             <button
               onClick={() => signOut()}
               className="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded text-sm"

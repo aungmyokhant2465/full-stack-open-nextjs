@@ -43,6 +43,13 @@
       "when": 1793349659895,
       "tag": "0005_slim_swordsman",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794149887404,
+      "tag": "0006_wet_captain_stacy",
+      "breakpoints": true
     }
   ]
 }

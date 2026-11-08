@@ -4,7 +4,9 @@ import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
 import { db } from "../../db";
 import { users } from "../../db/schema";
-import { getUserByUsername } from "../services/users";
+import { generateToken, getUserByUsername } from "../services/users";
+import { auth } from "@/auth";
+import { revalidatePath } from "next/cache";
 
 export interface InitRegisterUserStateType {
   errors: string[];
@@ -46,4 +48,15 @@ export const registerUser = async (
   await db.insert(users).values({ username, name, passwordHash });
 
   redirect("/login");
+};
+
+export const generateUserToken = async (formData: FormData) => {
+  const session = await auth();
+  if (!session) {
+    redirect("/login");
+  }
+  const username = (formData.get("username") as string)?.trim();
+
+  await generateToken(username);
+  revalidatePath("/me");
 };
