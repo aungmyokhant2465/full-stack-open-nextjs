@@ -29,6 +29,13 @@ export const getUserWithBlogs = async (username: string) => {
   });
 };
 
+export const getUserWithBlogsByToken = async (token: string) => {
+  return db.query.users.findFirst({
+    where: eq(users.token, token),
+    with: { blogs: true },
+  });
+};
+
 export const generateToken = async (username: string) => {
   await db
     .update(users)
