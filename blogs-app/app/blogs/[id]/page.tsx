@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getBlogById } from "../../services/blogs";
-import { increaseBlogLike } from "@/app/actions/blogs";
+// import { increaseBlogLike } from "@/app/actions/blogs";
+import BlogCard from "@/app/components/blogCard";
 
 const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -12,7 +13,7 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-4">{blog.title}</h2>
+      {/* <h2 className="text-2xl font-bold mb-4">{blog.title}</h2>
       <h3 className="text-xl">
         author : <em>{blog.author}</em>
       </h3>
@@ -33,7 +34,14 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
         <a href={blog.url} className="text-blue-600 hover:underline">
           {blog.url}
         </a>
-      </p>
+      </p> */}
+      <BlogCard
+        id={blog.id}
+        title={blog.title}
+        author={blog.author}
+        likes={blog.likes}
+        url={blog.url}
+      />
     </div>
   );
 };

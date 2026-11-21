@@ -50,6 +50,13 @@
       "when": 1794149887404,
       "tag": "0006_wet_captain_stacy",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1795185495842,
+      "tag": "0007_neat_kid_colt",
+      "breakpoints": true
     }
   ]
 }

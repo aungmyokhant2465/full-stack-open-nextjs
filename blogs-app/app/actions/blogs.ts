@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { addBlog, increaseLike } from "../services/blogs";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
+import { addReadingList } from "../services/readingList";
 
 export interface InitBlogStateType {
   errors: string[];
@@ -51,4 +52,11 @@ export const increaseBlogLike = async (FormData: FormData) => {
   await increaseLike(id);
   revalidatePath(`/blogs/${id}`);
   revalidatePath("/blogs");
+};
+
+export const addToReadingList = async (FormData: FormData) => {
+  const blog_id = Number(FormData.get("blog_id"));
+  await addReadingList(blog_id);
+  revalidatePath("/me");
+  revalidatePath(`/blogs/${blog_id}`);
 };

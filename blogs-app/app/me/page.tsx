@@ -2,6 +2,8 @@ import { auth } from "@/auth";
 import { notFound, redirect } from "next/navigation";
 import { getUserWithBlogs } from "../services/users";
 import { generateUserToken } from "../actions/users";
+import { getReadingList } from "../services/readingList";
+import { makeAsRead } from "../actions/readinglist";
 
 const Me = async () => {
   const session = await auth();
@@ -14,6 +16,9 @@ const Me = async () => {
   if (!user) {
     notFound();
   }
+  const reading_list = await getReadingList(user.id);
+  const unread_list = reading_list.filter((b) => b.read === false);
+  const readed_list = reading_list.filter((b) => b.read);
 
   return (
     <div className="max-w-2xl mx-auto p-6">
@@ -28,6 +33,46 @@ const Me = async () => {
           {user.username}
         </p>
       </article>
+      <hr />
+      <section>
+        <h3>Reading list</h3>
+        <article>
+          <h4>Unread ({unread_list.length})</h4>
+          <ul className="text-black">
+            {unread_list &&
+              unread_list.map((l) => (
+                <li
+                  key={l.id}
+                  className="my-1 p-1 bg-amber-50 flex justify-between"
+                >
+                  {l.blog.title}
+                  <form action={makeAsRead}>
+                    <input type="hidden" name="blog_id" value={l.blog.id} />
+                    <button
+                      type="submit"
+                      data-like
+                      aria-pressed="false"
+                      className="rounded-full border border-slate-200 px-3 py-1.5 text-sm font-medium bg-green-800 text-white transition hover:border-rose-300 hover:bg-rose-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 aria-pressed:border-rose-300 aria-pressed:bg-rose-50 aria-pressed:text-rose-600 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-rose-950 dark:aria-pressed:bg-rose-950 dark:aria-pressed:text-rose-400"
+                    >
+                      make as read
+                    </button>
+                  </form>
+                </li>
+              ))}
+          </ul>
+        </article>
+        <article>
+          <h4>Readed ({readed_list.length})</h4>
+          <ul className="text-black">
+            {readed_list &&
+              readed_list.map((l) => (
+                <li key={l.id} className="my-1 p-1 bg-green-200">
+                  {l.blog.title}
+                </li>
+              ))}
+          </ul>
+        </article>
+      </section>
       <hr />
       <article>
         <h2 className="text-2xl font-bold mb-4">API Token</h2>
