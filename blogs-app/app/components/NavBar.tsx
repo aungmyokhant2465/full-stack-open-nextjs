@@ -24,7 +24,7 @@ export default function NavBar() {
               create blog
             </Link>
             <Link href="/me" className="hover:text-gray-300">
-              Me
+              me
             </Link>
             <button
               onClick={() => signOut()}

@@ -18,7 +18,10 @@ export default async function BlogCard({
 
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-      <h2 className="text-4xl font-semibold leading-snug">
+      <h2
+        className="text-4xl font-semibold leading-snug"
+        data-testid="blog-title"
+      >
         <a
           data-url
           className="rounded hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
@@ -27,7 +30,10 @@ export default async function BlogCard({
           {title}
         </a>
       </h2>
-      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+      <p
+        className="mt-1 text-sm text-slate-500 dark:text-slate-400"
+        data-testid="blog-author"
+      >
         By{" "}
         <span
           data-author
@@ -71,6 +77,7 @@ export default async function BlogCard({
               data-save
               aria-pressed="false"
               className="group inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 aria-pressed:border-indigo-300 aria-pressed:bg-indigo-50 aria-pressed:text-indigo-700 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:aria-pressed:bg-indigo-950 dark:aria-pressed:text-indigo-300"
+              data-testid="add-to-reading-list-button"
             >
               <svg
                 className="h-4 w-4 fill-none group-aria-pressed:fill-current"

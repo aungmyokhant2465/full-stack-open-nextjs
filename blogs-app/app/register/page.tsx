@@ -49,7 +49,7 @@ export default function RegisterPage() {
         </div>
         <div>
           <label>
-            Password
+            Confirm Password
             <input
               type="password"
               name="re_password"
@@ -58,10 +58,18 @@ export default function RegisterPage() {
             />
           </label>
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" data-testid="register-button">
+          Register
+        </button>
         {state.errors.length > 0 &&
           state.errors.map((e, index) => (
-            <p key={index} style={{ color: "red" }}>
+            <p
+              key={index}
+              style={{ color: "red" }}
+              data-testid={
+                e.startsWith("u") ? "username-error" : "passwordConfirm-error"
+              }
+            >
               {e}
             </p>
           ))}

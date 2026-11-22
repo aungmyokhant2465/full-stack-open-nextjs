@@ -12,7 +12,7 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
+    <div className="max-w-2xl mx-auto p-6" data-testid="blog-detail">
       {/* <h2 className="text-2xl font-bold mb-4">{blog.title}</h2>
       <h3 className="text-xl">
         author : <em>{blog.author}</em>

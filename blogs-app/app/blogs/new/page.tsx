@@ -39,7 +39,7 @@ const NewBlog = () => {
         </div>
         <div>
           <label>
-            <span className="block">Auther</span>
+            <span className="block">Author</span>
             <input
               type="text"
               name="author"
@@ -64,6 +64,7 @@ const NewBlog = () => {
         <button
           type="submit"
           className=" text-blue-600 h-10 border-2 p-1 rounded-sm hover:bg-gray-100 hover:border-2 hover:cursor-pointer"
+          data-testid="create-blog-button"
         >
           Create
         </button>

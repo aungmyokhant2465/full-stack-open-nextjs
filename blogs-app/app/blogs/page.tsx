@@ -24,23 +24,28 @@ const Blogs = async ({
           type="search"
           name="filter"
           placeholder="Search by title"
+          data-testid="filter-input"
         />
         <button
           className=" text-blue-600 ml-1 h-10 border-2 p-1 rounded-sm hover:bg-gray-100 hover:border-2 hover:cursor-pointer"
           type="submit"
+          data-testid="search-button"
         >
           Search
         </button>
       </form>
-      <ul className="space-y-2">
+      <ul className="space-y-2" data-testid="blogs-list">
         {blogs.map((blog) => (
           <li key={blog.id}>
             <Link
               href={`/blogs/${blog.id}`}
               className="text-blue-600 hover:underline"
             >
-              {blog.title} | likes : <strong>{blog.likes}</strong>
+              {blog.title}
             </Link>
+            <span>
+              <strong>{blog.likes} likes</strong>
+            </span>
           </li>
         ))}
       </ul>
